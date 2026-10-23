@@ -22,6 +22,14 @@ const createTask = (req, res) => {
 const getAllTasks = (req, res) => {
   const { status, priority, search } = req.query;
 
+  for (const [name, value] of Object.entries({ status, priority, search })) {
+    if (value !== undefined && typeof value !== "string") {
+      return res.status(400).json({
+        message: name + " tek bir metin degeri olmalidir"
+      });
+    }
+  }
+
   let filteredTasks = tasks;
 
   if (status) {
@@ -42,7 +50,7 @@ const getAllTasks = (req, res) => {
     );
   }
 
-  res.status(200).json(tasks);
+  res.status(200).json(filteredTasks);
 };
 
 const getTaskById = (req, res) => {
