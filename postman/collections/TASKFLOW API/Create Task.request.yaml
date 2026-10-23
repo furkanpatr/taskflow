@@ -1,0 +1,18 @@
+$kind: http-request
+description: ""
+url: http://localhost:3000/tasks
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \  \"title\": \"Login API gelistir\",\r
+
+    \  \"description\": \"Kullanici giris islemlerini hazirla\",\r
+
+    \  \"assignee\": \"Ahmet\",\r
+
+    \  \"priority\": \"high\"\r
+
+    }"
+order: 1000
